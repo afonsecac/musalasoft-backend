@@ -1,0 +1,57 @@
+{
+    "swagger": "2.0",
+    "host": "",
+    "info": {
+        "title": "BackendTest",
+        "description": " Remote Patient Monitoring service-view",
+        "version": ""
+    },
+    "basePath": "",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "schemes": [
+        "http"
+    ],
+    "tags": [
+        {
+            "name": "enrollment"
+        }
+    ],
+    "paths": {
+        "/enrollment": {
+            "post": {
+                "tags": [
+                    "emails"
+                ],
+                "summary": "Enrolled patients",
+                "description": "Get all enrolled patients in a program",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Meta": {
+            "type": "object",
+            "properties": {}
+        },
+        "Enrollment": {
+            "type": "object",
+            "properties": {}
+        }
+    }
+}
