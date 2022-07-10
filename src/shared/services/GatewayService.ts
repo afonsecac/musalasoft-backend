@@ -2,6 +2,7 @@ import * as R from 'ramda';
 
 import { GatewayRepository } from '../repository/GatewayRepository';
 import { IGateway } from '../interfaces/IGateway';
+import { renameId } from "../utils/paginated";
 
 export class GatewayService {
 
@@ -9,7 +10,7 @@ export class GatewayService {
     }
 
     async getById(id: string): Promise<any> {
-        return await this.gatewayRepository.findById(id);
+        return await this.gatewayRepository.findById(id).then(renameId);
     }
 
     async created(gateway: IGateway): Promise<any> {
@@ -20,7 +21,7 @@ export class GatewayService {
         try {
             const currentGateway: any = await this.getById(gateway.id);
             gateway = R.mergeDeepRight(currentGateway, gateway);
-            return await this.gatewayRepository.update(gateway);
+            return await this.gatewayRepository.update(gateway).then(renameId);
         } catch (e) {
             throw e;
         }

@@ -38,6 +38,7 @@ export const findAllPeripheral = {
         createdAt: types.date().optional(),
         uid: types.number().optional(),
         vendor: types.string().optional(),
+        gatewayId: types.string().optional(),
         status: types.string()
             .regex(new RegExp(/^online|offline$/))
             .optional(),

@@ -5,6 +5,7 @@ const renameKeys = R.curry((keysMap, obj) =>
 );
 
 export const renameIds = R.map(renameKeys({ _id: 'id' }))
+export const renameId = R.compose(renameKeys({ _id: 'id' }));
 
 // @ts-ignore
 export const getSkipFromLimitAndPage = R.useWith(R.multiply, [R.identity, R.subtract(R.__, 1)]);

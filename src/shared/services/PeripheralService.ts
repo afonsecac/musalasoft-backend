@@ -2,6 +2,7 @@ import * as R from 'ramda';
 
 import { PeripheralRepository } from "../repository/PeripheralRepository";
 import { IPeripheral } from "../interfaces/IPeripheral";
+import { renameId } from "../utils/paginated";
 
 export class PeripheralService {
 
@@ -9,7 +10,7 @@ export class PeripheralService {
     }
 
     async getById(id: string): Promise<any> {
-        return this.peripheralRepository.findById(id);
+        return this.peripheralRepository.findById(id).then(renameId);
     }
 
     async create(peripheral: IPeripheral): Promise<any> {
@@ -21,7 +22,7 @@ export class PeripheralService {
             const currentPeripheral: any = await this.getById(id);
             peripheral = R.mergeDeepRight(currentPeripheral, peripheral);
 
-            return this.peripheralRepository.update(peripheral);
+            return this.peripheralRepository.update(peripheral).then(renameId);
         } catch (e) {
             throw e;
         }

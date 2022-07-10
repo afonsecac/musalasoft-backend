@@ -1,7 +1,6 @@
 import * as types from 'joi';
 
 const gateway = {
-    id: types.string().optional(),
     name: types.string().required(),
     serialNumber: types.number().required(),
     ipV4: types.string()
@@ -10,8 +9,9 @@ const gateway = {
 };
 
 const gatewayUpdate = {
+    id: types.string().required(),
     name: types.string().optional(),
-    serialNumber: types.string().optional(),
+    serialNumber: types.number().optional(),
     ipV4: types.string()
         .regex(new RegExp(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/))
         .optional()
