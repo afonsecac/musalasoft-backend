@@ -6,7 +6,8 @@ const peripheral = {
     uid: types.number().required(),
     vendor: types.string().required(),
     status: types.string()
-        .optional()
+        .regex(new RegExp(/^online|offline$/))
+        .required()
         .default('online'),
     gatewayId: types.string().required()
 }
@@ -16,6 +17,7 @@ const peripheralUpdated = {
     uid: types.string().optional(),
     vendor: types.string().optional(),
     status: types.string()
+        .regex(new RegExp(/^online|offline$/))
         .optional()
         .default('online')
         .description('Status values: online/offline')
@@ -34,6 +36,11 @@ export const peripheralSchemaUp = {
 export const findAllPeripheral = {
     query: types.object().keys({
         createdAt: types.date().optional(),
+        uid: types.number().optional(),
+        vendor: types.string().optional(),
+        status: types.string()
+            .regex(new RegExp(/^online|offline$/))
+            .optional(),
         sort: types.string()
             .optional()
             .default('-createdAt')
