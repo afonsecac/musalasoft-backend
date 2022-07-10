@@ -6,7 +6,7 @@ import { createContainer } from '../../shared/config/di';
 import { initDatabaseConnection } from '../../shared/config/mongo';
 
 import { GatewayController } from '../controllers/GatewayController';
-import {PeripheralController} from "../controllers/PeripheralController";
+import { PeripheralController } from "../controllers/PeripheralController";
 import { GatewayRepository } from '../../shared/repository/GatewayRepository';
 import { GatewayService } from '../../shared/services/GatewayService';
 import { PeripheralRepository } from "../../shared/repository/PeripheralRepository";
