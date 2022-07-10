@@ -1,9 +1,6 @@
-import {Collection} from 'mongodb';
+import { Collection } from 'mongodb';
 import * as uuid from 'uuid';
 import * as R from 'ramda';
-
-const createInsertData = R.compose(R.mergeRight({ _id: uuid.v4(), createdAt: new Date() }));
-const updateInsertData = R.compose(R.mergeRight({ updatedAt: new Date() }), R.omit(['id']));
 
 export class IRepository<T> {
     protected collection: Collection;
@@ -13,11 +10,16 @@ export class IRepository<T> {
     }
 
     async save(object: any): Promise<any> {
-        const newObject = createInsertData(object);
+        const createInsertData = R.compose(R.mergeRight({ createdAt: new Date() }));
+        const newObject = createInsertData({
+            ...object,
+            _id: uuid.v4()
+        });
         return await this.collection.insertOne(newObject);
     }
 
     async update(object: any): Promise<any> {
+        const updateInsertData = R.compose(R.mergeRight({ updatedAt: new Date() }), R.omit(['id']));
         const currentObject = updateInsertData(object);
         return await this.collection.updateOne({
             _id: object.id

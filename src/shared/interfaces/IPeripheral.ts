@@ -1,7 +1,7 @@
 export interface IPeripheral {
-    id: string;
-    uid: number;
-    vendor: string;
-    createdAt: Date;
-    status: string;
+    id?: string;
+    uid?: number;
+    vendor?: string;
+    status?: string;
+    gatewayId?: string;
 }

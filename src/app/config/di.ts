@@ -6,8 +6,11 @@ import { createContainer } from '../../shared/config/di';
 import { initDatabaseConnection } from '../../shared/config/mongo';
 
 import { GatewayController } from '../controllers/GatewayController';
+import {PeripheralController} from "../controllers/PeripheralController";
 import { GatewayRepository } from '../../shared/repository/GatewayRepository';
 import { GatewayService } from '../../shared/services/GatewayService';
+import { PeripheralRepository } from "../../shared/repository/PeripheralRepository";
+import { PeripheralService } from "../../shared/services/PeripheralService";
 
 let containerCreated: any;
 
@@ -24,10 +27,13 @@ export const initDI = async () => {
                 db: asValue(db),
 
                 GatewayController: asClass(GatewayController).singleton(),
+                PeripheralController: asClass(PeripheralController).singleton(),
 
                 gatewayService: asClass(GatewayService).singleton(),
+                peripheralService: asClass(PeripheralService).singleton(),
 
                 gatewayRepository: asClass(GatewayRepository).singleton(),
+                peripheralRepository: asClass(PeripheralRepository).singleton(),
             });
 
             containerCreated = container;

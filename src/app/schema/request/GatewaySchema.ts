@@ -33,6 +33,6 @@ export const findAllGateway = {
             .description('Sort order')
             .example('-createdAt'),
         limit: types.number().default(10),
-        page: types.number().default(0)
+        page: types.number().default(1)
     })
 }

@@ -1,4 +1,4 @@
-import {Db} from 'mongodb';
+import { Db } from 'mongodb';
 import * as R from 'ramda';
 
 import { IRepository } from './IRepository';
