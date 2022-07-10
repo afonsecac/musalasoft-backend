@@ -3,7 +3,7 @@ import * as types from 'joi';
 
 const peripheral = {
     id: types.string().optional(),
-    uid: types.string().required(),
+    uid: types.number().required(),
     vendor: types.string().required(),
     status: types.string()
         .optional()
@@ -17,7 +17,9 @@ const peripheralUpdated = {
     vendor: types.string().optional(),
     status: types.string()
         .optional()
-        .default('online'),
+        .default('online')
+        .description('Status values: online/offline')
+        .example('offline'),
     gatewayId: types.string().optional()
 }
 

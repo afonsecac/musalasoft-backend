@@ -17,7 +17,8 @@ const convertToMatchEq = (field: string, dbField: string) => R.ifElse(R.has(fiel
 );
 
 const applyFilters = R.juxt([
-    convertToMatchEq('gatewayId', 'gatewayId')
+    convertToMatchEq('gatewayId', 'gatewayId'),
+    convertToMatchEq('uid', 'uid')
 ]);
 
 export class PeripheralRepository extends IRepository<IPeripheral> {
