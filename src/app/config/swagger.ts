@@ -13,7 +13,7 @@ export const register = (server: any) => {
         description: packageFile.description,
         version: packageFile.version,
     };
-    swaggerFile.host = `${process.env.HOST}:${process.env.SWAGGER_PORT}`;
+    swaggerFile.host = `${process.env.SWAGGER_HOST}:${process.env.SWAGGER_PORT}`;
     swaggerFile.basePath = '/';
 
     server.use(
